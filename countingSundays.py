@@ -30,21 +30,21 @@ def countDays(DayStart, YearStart, NumberOfYears):
 				newDay = ( curseur[len(curseur)-1] + ( m % 7 ) ) % 7
 				curseur.append( newDay )
 		else:
-			for m in monthsBissextileBorderYear:
+			for m in normalMonthsBorderYear:
 				newDay = ( curseur[len(curseur)-1] + ( m % 7 ) ) % 7
 				curseur.append( newDay )
 
 	else:
 		for y in range(np.amax([NumberOfYears-1,1])):
 			if Bissextile(YearStart + y):
+				print YearStart + y
 				for m in monthsBissextile:
 					newDay = ( curseur[len(curseur)-1] + ( m % 7 ) ) % 7
 					curseur.append( newDay )
 			else:
-				for m in monthsBissextile:
+				for m in normalMonths:
 					newDay = ( curseur[len(curseur)-1] + ( m % 7 ) ) % 7
 					curseur.append( newDay )
-
 		# Last year
 		if Bissextile(YearStart + NumberOfYears - 1):
 			for m in monthsBissextileBorderYear:
@@ -63,7 +63,7 @@ def countDays(DayStart, YearStart, NumberOfYears):
 
 if __name__ == '__main__':
 	DayStart = 1
-	NumberOfYears = 3
+	NumberOfYears = 100
 	numberOfDays = countDays(DayStart, 1901, NumberOfYears)
 	pdb.set_trace()
 	print numberOfDays[6]
